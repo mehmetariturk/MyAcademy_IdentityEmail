@@ -1,0 +1,16 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using MyAcademy_IdentityEmail.Entities;
+
+namespace MyAcademy_IdentityEmail.Context
+{
+    public class EmailContext : IdentityDbContext<AppUser>
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost;initial catalog=IdentityEmailDb;integrated security=true;trust server certificate=true");
+        }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Message> Messages { get; set; }
+    }
+}
